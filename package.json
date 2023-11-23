@@ -3,7 +3,8 @@
   "scripts": {
     "dev": "vite",
     "build": "vite build",
-    "start": "wrangler dev src/entry-server.ts"
+    "start": "wrangler dev src/entry-server.ts",
+    "deploy": "wrangler deploy"
   },
   "dependencies": {
     "hono": "^3.10.2",
