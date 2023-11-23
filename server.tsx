@@ -21,7 +21,7 @@ type SSROptions = {
 
 export const ssr = (
   App: SSRElement,
-  options?: Partial<SSROptions>
+  options?: Partial<SSROptions>,
 ): MiddlewareHandler => {
   return async (c, next) => {
     const path = new URL(c.req.url).pathname;
@@ -43,7 +43,7 @@ export const ssr = (
       {
         manifest: manifest,
         namespace: c.env?.__STATIC_CONTENT,
-      }
+      },
     );
 
     const view = bufferToString(buffer!);
