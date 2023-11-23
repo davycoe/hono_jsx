@@ -11,7 +11,7 @@ export default defineConfig({
   ],
   build: {
     minify: true,
-    // outDir: "./dist",
-    outDir: "./static/public",
+    outDir: "./dist/public",
+    // outDir: "./static/public",
   },
 });
