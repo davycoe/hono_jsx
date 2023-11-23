@@ -1,10 +1,12 @@
 import Helmet from "preact-helmet";
-import { Link } from "preact-router/match";
 
 export const About = () => (
   <>
-    <Helmet title="Preact About Page!" />
+    <Helmet
+      title="Preact About Page!"
+      meta={[{ name: "description", content: "Helmet application" }]}
+    />
     <h1>About!</h1>
-    <Link href="/">Home</Link>
+    <a href="/">Home</a>
   </>
 );

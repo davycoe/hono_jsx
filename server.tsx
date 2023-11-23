@@ -6,6 +6,7 @@ import type { MiddlewareHandler } from "hono";
 import { bufferToString } from "hono/utils/buffer";
 import { getContentFromKVAsset } from "hono/utils/cloudflare";
 import { StatusCode } from "hono/utils/http-status";
+import Helmet from "preact-helmet";
 
 export type SSRElement = ({ path }: { path?: string }) => JSX.Element;
 
@@ -25,6 +26,7 @@ export const ssr = (
   return async (c, next) => {
     const path = new URL(c.req.url).pathname;
     let content = renderPreact(<App path={path} />);
+    const head = Helmet.rewind();
     let statusCode: StatusCode = 200;
 
     if (content === "") {
@@ -49,10 +51,12 @@ export const ssr = (
 
     if (!replacer) {
       replacer = (html: string, content: string) =>
-        html.replace(
-          /<div id="root"><\/div>/,
-          `<div id="root">${content}</div>`
-        );
+        html
+          .replace(/<div id="root"><\/div>/, `<div id="root">${content}</div>`)
+          .replace("</head>", `${head.title.toString()}</head>`)
+          .replace("</head>", `${head.meta.toString()}</head>`)
+          .replace("</head>", `${head.link.toString()}</head>`)
+          .replace("</body>", `${head.script.toString()}</body>`);
     }
 
     let html = replacer(view, content);
