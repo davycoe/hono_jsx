@@ -1,4 +1,6 @@
 import { hydrate } from "preact";
 import App from "./App";
 
-hydrate(<App />, document.getElementById("root")!);
+requestIdleCallback(hydrate(<App />, document.getElementById("root")!), {
+  timeout: 2000,
+});
