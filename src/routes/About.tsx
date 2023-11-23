@@ -1,6 +1,7 @@
 import Helmet from "preact-helmet";
+import type { RouterProps } from "preact-router";
 
-export const About = () => (
+export const About = (path: RouterProps) => (
   <>
     <Helmet
       title="Preact About Page!"
