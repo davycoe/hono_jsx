@@ -1,4 +1,3 @@
-import { hydrate } from "preact";
-import App from "./App";
+import { Counter } from "@components/Hello";
 
-hydrate(<App />, document.getElementById("root")!);
+requestIdleCallback(() => Counter(), { timeout: 2000 });

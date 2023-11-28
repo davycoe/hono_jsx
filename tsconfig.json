@@ -8,6 +8,14 @@
     "lib": ["ESNext", "DOM"],
     "types": ["@cloudflare/workers-types", "vite/client"],
     "jsx": "react-jsx",
-    "jsxImportSource": "preact"
+    "jsxImportSource": "hono/jsx",
+    "baseUrl": "./src",
+    "paths": {
+      "@components/*": ["components/*"],
+      "@layouts/*": ["layouts/*"],
+      "@pages/*": ["pages/*"],
+      "@routes/*": ["routes/*"],
+      "@utils/*": ["utils/*"]
+    }
   }
 }
